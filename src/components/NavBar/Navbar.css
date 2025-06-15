@@ -97,11 +97,9 @@
         font-size: 15px;
     }
 }
-
 .navbar-profile{
     position: relative;
 }
-
 .nav-profile-dropdown{
     position: absolute;
     display: none;
