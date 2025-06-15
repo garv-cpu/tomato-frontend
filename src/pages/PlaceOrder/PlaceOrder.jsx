@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 
+/* global Cashfree */
+
 const PlaceOrder = () => {
   const { getTotalCartAmount, cartItems, userId } = useContext(StoreContext);
 
@@ -51,7 +53,7 @@ const PlaceOrder = () => {
       const data = await response.json();
 
       if (data.success && data.payment_session_id) {
-        const cashfree = window.Cashfree({ mode: "production" }); // or "sandbox"
+        const cashfree = Cashfree({ mode: "production" }); // or "sandbox"
         cashfree.checkout({
           paymentSessionId: data.payment_session_id,
           redirectTarget: "_self",
