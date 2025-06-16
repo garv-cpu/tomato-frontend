@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
-import toast from 'react-toastify';
+import {toast} from 'react-toastify';
 
 const PlaceOrder = () => {
   const { getTotalCartAmount, cartItems, userId, url} = useContext(StoreContext);
