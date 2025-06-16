@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
+import toast from 'react-toastify';
 
 const PlaceOrder = () => {
-  const { getTotalCartAmount, cartItems, userId } = useContext(StoreContext);
+  const { getTotalCartAmount, cartItems, userId, url} = useContext(StoreContext);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -31,7 +32,7 @@ const PlaceOrder = () => {
 
     try {
       const response = await fetch(
-        "https://tomato-backend-zb2y.onrender.com/api/order/place",
+        `${url}/api/order/place`,
         {
           method: "POST",
           headers: {
@@ -59,7 +60,7 @@ const PlaceOrder = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Your booking has been placed! A confirmation email will be sent shortly.");
+        toast.success('Your booking has been placed! A confirmation email will be sent shortly.')
       } else {
         alert("Failed to place booking. Try again.");
       }
